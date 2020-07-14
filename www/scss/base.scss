@@ -1,0 +1,352 @@
+/* Scss Document */
+/*基本設定*/
+html{font-size:62.5%;}
+body{font-size:1.4rem;
+	box-sizing: border-box;}
+
+
+/*サイトのテーマ*/
+$theme-01: #000000; //黒
+$theme-02: #CFC7C1; //ベージュ
+$theme-03: #006837; //ロゴ色緑
+$theme-04: #ffffff; //白
+$theme-05: #262605; //カーキ色
+$theme-06: #535639; //ライトカーキ
+
+/*メディアサイズ*/
+$pc_width:980px;
+$sp_width:414px;
+
+/*汎用スタイル*/
+@mixin clear-fix{ //クリアフィックス
+	&::after{
+		height: 0;
+		display: block;
+		clear: both;
+		content:'.';
+		font-size: 0;
+		visibility: hidden;		
+	}
+}
+@mixin centering{ //中央揃え
+	margin: 0 auto;
+}
+/*特殊スタイル*/
+.text_strong{
+	font-size:3.2rem;
+}
+
+/*構成*/
+.wrap{
+	background-color: $theme-02;
+	@media screen and (max-width:$sp_width){
+		width:$sp_width;
+		overflow: hidden;
+	}
+	.wrap__inner{
+		@include centering;
+		width:$pc_width;
+		@media screen and (max-width:$sp_width){
+			width:$sp_width;
+			overflow: hidden;
+		}
+	}
+}
+
+header{
+	background-color: $theme-01;
+	h1{
+		height:60px;
+		font-size: 2.0rem;
+		color:#ffffff;
+		padding: 30px 20px 0 20px;
+		line-height: 1.4;
+		@media screen and (max-width:$sp_width){
+			height: 30px;
+			width:$sp_width;
+			padding: 10px 20px 20px 20px;
+			font-size:1.6rem;
+		}
+	}
+	@media screen and (min-width:$sp_width){
+		.topimage{
+			display: block;
+		}
+		.topimage_sp{
+			display: none;
+		}
+	}
+	@media screen and (max-width:$sp_width){
+		.topimage{
+			display: none;
+		}
+		.topimage_sp{
+			display:block;
+		}
+	}
+	nav{
+		margin: 0 0 10px 20px;
+		width: 240px;
+		height: 40px;
+		.topnav-check{
+			display: none;
+		}
+		.topnav-label{
+			float: left;
+			height: 40px;
+			width: 40px;
+			background:url("../img/topnav.png") no-repeat;
+		}
+		.topnav-content{
+			visibility: hidden;
+			clear: both;
+			height: 0;
+			opacity: 0;
+			transition: .5s;
+			li{
+				color: #ffffff;
+				background-color: $theme-05;
+				line-height: 1.6;
+				border-bottom: 1px solid #888888;
+				a{
+					display: block;
+					padding: 10px 20px;
+					color: $theme-02;
+					text-decoration: none;
+					&:hover{
+						background-color: lighten($theme-05,20%);
+					}
+				}
+			}
+		}
+		.topnav-check:checked + .topnav-label + .topnav-content{
+			visibility: visible;
+			height: 0;
+			opacity: 1;
+			position: relative;
+			top:0;
+			right: 0;
+		}
+		.topnav-check:checked + .topnav-label{
+			background: url("../img/topnav2.png") no-repeat;
+		}
+	}
+}
+section{
+	margin: 20px 0 0 0;	
+}
+.lead-01{
+	div{
+		@include centering;
+		@include clear-fix;
+		width: 760px;
+		height:100px;
+		@media screen and (max-width:$sp_width){
+			width: $sp_width;
+			height:60px;
+			}
+	
+		.lead-text{
+			font-size: 1.5rem;
+			line-height: 1.8;
+			color: #596337;
+			background:url("../img/lead_bg.png") no-repeat;
+			width: 360px;
+			height: 100px;
+			text-align: center;
+			padding: 10px 0 0 0;
+			float:left;
+			@media screen and (max-width:$sp_width){
+				clear: both;
+				width: $sp_width;
+				height: 60px;
+				margin: 0;
+				padding: 0;
+				background: none;
+				line-height: 1.2;
+			}
+		}
+		img{
+			float:left;
+		@media screen and (max-width:$sp_width){
+			display: none;
+			}
+		}
+	}
+}
+article{
+	background-color: $theme-05;
+	margin: 20px 0 0 0;
+	padding: 20px 0 20px 0;
+	@media screen and (max-width:$sp_width){
+		background:none;
+		margin: 20px 0 0 0;
+		padding: 0;
+		width:$sp_width;		
+	}
+}
+.article-wrap{
+	@include centering;
+	@include clear-fix;
+	width:250*3+20+20px;
+	@media screen and (max-width:$sp_width){
+		@include centering;
+		width:326px;
+	}
+	a{
+		float: left;
+		text-decoration: none;
+		color:$theme-04;
+		margin: 0 20px 0 0;
+		@media screen and (min-width:$sp_width){
+			.article-image-pc{
+				display: block;
+			}
+			.article-image-sp{
+				display: none;
+			}
+		}
+		@media screen and (max-width:$sp_width){
+			margin: 0 0 30px 0;
+			.article-image-pc{
+				display: none;
+			}
+			.article-image-sp{
+				display:block;
+			}
+		}
+		dt,dd{
+			background-color: $theme-03;
+		}
+		dt{
+			font-size: 2.2rem;
+			padding: 10px;
+			@media screen and (max-width:$sp_width){
+				font-size:1.6rem;
+			}
+		}
+		dd{
+			font-size: 1.5rem;
+			padding: 0 10px 20px 10px;
+			line-height:1.4;
+			@media screen and (max-width:$sp_width){
+				margin: 0 0 10px 0;
+				padding: 0 10px 10px 10px;
+				}
+		}
+		&:last-child{
+			float: left;
+			margin: 0;
+			@media screen and(max-width:$sp_width){
+				margin:0 0 0 0;
+			}
+		}
+		&:hover{
+			opacity: 0.5;
+		}
+	}
+}
+.feat-01,.feat-02{
+	background-color: $theme-06;
+	text-align: center;
+	a{
+		text-decoration: none;
+		font-size:1.5rem;
+		line-height: 1.6;
+		color: $theme-04;
+	}
+	a:hover{
+		img{
+			opacity:0.5;
+			filter: brightness(110%);
+		}
+	}
+	h2{
+		font-size:1.8rem;
+		font-weight: normal;
+		margin: 0 0 20px 0;
+	}
+}
+.feat-01{
+	a{
+		@media screen and(max-width:$sp_width){
+			.feat-01__pc{
+				display: none;
+			}
+			.feat-01__sp{
+				display:block;
+				margin: 0;
+				padding: 20px 55px 20px 55px;
+				p{
+					margin: 10px 0 10px 0;
+				}
+			}
+		}
+		@media screen and(min-width:$sp_width){
+			.feat-01__pc{
+				display: block;
+			}
+			.feat-01__sp{
+				display: none;
+			}
+		}
+	}
+}
+.feat-02{
+	a{
+		@media screen and(max-width:$sp_width){
+			.feat-02__pc{
+				display: none;
+			}
+			.feat-02__sp{
+				display:block;
+				padding: 20px 55px 20px 55px;
+				p{
+					margin: 10px 0 10px 0;
+				}
+			}
+		}
+		@media screen and(min-width:$sp_width){
+			.feat-02__pc{
+				display: block;
+			}
+			.feat-02__sp{
+				display: none;
+			}
+		}
+	}
+}
+footer{
+	background-color: $theme-05;
+	color: $theme-04;
+	height: 240px;
+	margin: 20px 0 0 0;
+	padding: 20px 20px 0 20px;
+	font-size: 1.4rem;
+	.sns{
+		float:left;
+		line-height: 1.6;
+		margin: 0 0 0 40px;
+		@media screen and(max-width:$sp_width){
+			clear: both;
+			margin: 0
+		}
+	}
+	address{
+		float: right;
+		width: 380px;
+		font-style: normal;
+		@media screen and(max-width:$sp_width){
+			float:left;
+			margin: 20px 0 0 0;
+			width: 300px;
+		}
+		img{
+			float: left;
+		}
+		p{
+			margin: 12px 0 0 0;
+			line-height: 1.6;
+		}
+	}
+}
